@@ -1,5 +1,4 @@
-# made by the one and only eyad taha
-
+# made by the one and only eyad
 print('tool_TTJ %%% Tool Text To JSON')
 
 n1 = int(input("Enter number 1: "))
