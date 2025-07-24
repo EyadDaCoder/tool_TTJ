@@ -1,0 +1,86 @@
+[
+    {
+        "id": "9df4fc992c8c0845",
+        "type": "tab",
+        "label": "Main",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a30faf520020cab1",
+        "type": "inject",
+        "z": "9df4fc992c8c0845",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"n1\": 2, \"n2\": 9, \"exp\": \"+\" }",
+        "payloadType": "json",
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "a2dd8f8b5f0e14dc"
+            ]
+        ]
+    },
+    {
+        "id": "a2dd8f8b5f0e14dc",
+        "type": "function",
+        "z": "9df4fc992c8c0845",
+        "name": "calculate",
+        "func": "if (msg.payload.exp == \"+\") {\n    msg.payload = msg.payload.n1 + msg.payload.n2;\n} else if (msg.payload.exp == \"-\") {\n    msg.payload = msg.payload.n1 - msg.payload.n2;\n} else if (msg.payload.exp == \"*\") {\n    msg.payload = msg.payload.n1 * msg.payload.n2;\n} else if (msg.payload.exp == \"/\") {\n    msg.payload = msg.payload.n1 / msg.payload.n2;\n} else {\n    msg.payload = \"Invalid expression!\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "f5c0c697ab496bc0"
+            ]
+        ]
+    },
+    {
+        "id": "f5c0c697ab496bc0",
+        "type": "debug",
+        "z": "9df4fc992c8c0845",
+        "name": "print",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "b847d4b55445322f",
+        "type": "comment",
+        "z": "9df4fc992c8c0845",
+        "name": "Calculator",
+        "info": "",
+        "x": 480,
+        "y": 180,
+        "wires": []
+    }
+]
